@@ -65,4 +65,5 @@ app.get('/api/test-cors', (req, res) => {
   res.json({ message: 'CORS is working!', origin: req.headers.origin });
 });
 
+// CORRECT EXPORT FOR ES MODULES
 export default app;
