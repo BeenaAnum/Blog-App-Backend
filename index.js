@@ -9,8 +9,16 @@ import uploadRoutes from './routes/upload.js';
 
 const app = express();
 
-// Database Connection
-connectDB();
+// Middleware to handle Database Connection safely in Serverless
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    console.error('Database connection failed:', error);
+    res.status(500).json({ error: 'Database connection error' });
+  }
+});
 
 // CORS Configuration
 const allowedOrigins = [
@@ -22,7 +30,6 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl)
     if (!origin) return callback(null, true);
     
     if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
@@ -59,8 +66,3 @@ app.get('/api/test-cors', (req, res) => {
 });
 
 export default app;
-// Do NOT use app.listen(port) for Vercel production, it causes 500 errors!
-// Only use app.listen for local testing, or just export it directly:
-
-module.exports = app; 
-// or if you use ES modules (import/export): export default app;
