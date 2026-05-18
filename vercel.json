@@ -3,7 +3,7 @@
   "routes": [
     {
       "src": "/(.*)",  
-      // ✅ This is fine - it's a regex pattern
+   
       "dest": "/index.js"
     }
   ]
