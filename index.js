@@ -59,3 +59,8 @@ app.get('/api/test-cors', (req, res) => {
 });
 
 export default app;
+// Do NOT use app.listen(port) for Vercel production, it causes 500 errors!
+// Only use app.listen for local testing, or just export it directly:
+
+module.exports = app; 
+// or if you use ES modules (import/export): export default app;
