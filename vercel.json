@@ -1,15 +1,9 @@
 {
   "version": 2,
-  "functions": {
-    "index.js": {
-      "maxDuration": 10,
-      "memory": 1024
-    }
-  },
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "index.js"
+      "src": "/(.*)",  // ✅ This is fine - it's a regex pattern
+      "dest": "/index.js"
     }
   ]
 }
