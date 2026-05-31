@@ -22,7 +22,7 @@ app.use(async (req, res, next) => {
 
 // CORS Configuration
 const allowedOrigins = [
-  'https://blog-app-frontend-drab.vercel.app',
+'https://blog-app-frontend-drab.vercel.app',
   'http://localhost:5173',
   'http://localhost:3000',
   process.env.FRONTEND_URL
@@ -65,5 +65,5 @@ app.get('/api/test-cors', (req, res) => {
   res.json({ message: 'CORS is working!', origin: req.headers.origin });
 });
 
-// CORRECT EXPORT FOR ES MODULES
+// CORRECT EXPORT FOR ES MODULEs
 export default app;
